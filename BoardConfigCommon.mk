@@ -77,3 +77,5 @@ WIFI_DRIVER_MODULE_NAME     :=  "bcm4329"
 WIFI_DRIVER_MODULE_ARG      :=  "iface_name=wlan0 firmware_path=/vendor/firmware/fw_bcm4329.bin nvram_path=/vendor/firmware/nvram_net.txt"
 
 USE_OPENGL_RENDERER	:= true
+
+BOARD_USE_SKIA_LCDTEXT := true
