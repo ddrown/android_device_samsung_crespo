@@ -13,5 +13,6 @@
 # limitations under the License.
 
 LOCAL_PATH := $(call my-dir)
-
+ifneq ($(filter crespo crespo4g,$(TARGET_DEVICE)),)
 include $(call all-makefiles-under,$(LOCAL_PATH))
+endif
