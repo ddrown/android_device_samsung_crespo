@@ -71,6 +71,7 @@ on post-fs-data
 # wi-fi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
+    mkdir /data/misc/radvd 0755 root root
 
     setprop vold.post_fs_data_done 1
 
@@ -137,6 +138,22 @@ service iprenew_bnep0 /system/bin/dhcpcd -n
     class main
     disabled
     oneshot
+
+# CLAT for nat464
+service clat /system/bin/clatd
+    disabled
+    oneshot
+
+service disablev6fwd /system/bin/disable-ipv6-forwarding
+    disabled
+    oneshot
+
+on property:gsm.pdpprotocol.ipv6=1
+    start clat
+
+on property:gsm.pdpprotocol.ipv6=0
+    stop clat
+    start disablev6fwd
 
 service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm \
     --baudrate 3000000 --patchram /vendor/firmware/bcm4329.hcd /dev/s3c2410_serial0
