@@ -228,9 +228,7 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
-# nat464
-PRODUCT_PACKAGES += clatd radvd
-PRODUCT_COPY_FILES += \
-	external/android-clat/clatd.conf:system/etc/clatd.conf
+# tethering
+PRODUCT_PACKAGES += radvd
 
 $(call inherit-product-if-exists, vendor/nxp/pn544/nxp-pn544-fw-vendor.mk)
