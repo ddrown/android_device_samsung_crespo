@@ -219,6 +219,9 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 # Screen size is "normal", density is "hdpi"
 PRODUCT_AAPT_CONFIG := normal hdpi
 
+# tethering
+PRODUCT_PACKAGES += radvd
+
 $(call inherit-product-if-exists, vendor/nxp/pn544/nxp-pn544-fw-vendor.mk)
 
 WIFI_BAND := 802_11_BG
